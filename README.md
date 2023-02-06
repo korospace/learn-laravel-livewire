@@ -27,3 +27,20 @@ Create livewire views <br>
 ===================== <br>
 
     1- php artisan livewire:make ContactIndex
+
+       sub folder: php artisan livewire:make foldername/filename
+
+===================== <br>
+Custom Pagination     <br>
+===================== <br>
+
+    1- Generate paginate file at views/vendor/livewire
+
+        php artisan livewire:publish --pagination
+
+    2- Add function in livewire controller
+
+        public function paginationView()
+        {
+            return 'vendor.livewire.bootstrap';
+        }

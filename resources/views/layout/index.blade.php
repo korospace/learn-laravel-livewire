@@ -28,11 +28,7 @@
         <!-- body -->
         <div class="container mt-4">
             
-            <div class="card shadow">
-                
-                @yield('HtmlComponent')
-            
-            </div>
+            @yield('HtmlComponent')
             
         </div>
 
