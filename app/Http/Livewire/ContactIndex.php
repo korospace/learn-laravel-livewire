@@ -9,10 +9,13 @@ use Livewire\WithPagination;
 class ContactIndex extends Component
 {
     use WithPagination;
+
     // protected $paginationTheme = 'bootstrap';
-    
+    protected $queryString  = ['search'];
+    public $search   = "";
+    public $paginate = 5;
     public $isUpdate = false;
-    public $title;
+    public $title    = 'Table Contacts';
 
     protected $listeners = [
         'contactStored'  => 'handleStored',   // from: Http/livewire/ContactCreate.php
@@ -27,14 +30,12 @@ class ContactIndex extends Component
 
     public function render()
     {
-        $this->title = 'Table Contacts';
-
         // cara 1
         // return view('livewire.contact-index');
 
         // cara 2
         return view('livewire.contact-index',[
-            'data' => Contact::latest()->paginate(5)
+            'data' => Contact::latest()->where("name","like","%".$this->search."%")->paginate($this->paginate)
         ]);
     }
 
